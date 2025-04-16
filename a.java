@@ -5,3 +5,5 @@ public class JavaClass {
         return "Hello from Java!";
     }
 }
+}
+java
