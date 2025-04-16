@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript', 'python', 'java', 'go' ]  # Add languages that your repo uses
+        language: [ 'java' ]  # Add languages that your repo uses
 
     steps:
     - name: Checkout code
