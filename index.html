@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .quote-container {
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 300px;
+        }
+
+        .quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #333;
+        }
+
+        .author {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quote-container">
+    <div id="quote" class="quote">Loading...</div>
+    <div id="author" class="author"></div>
+</div>
+
+<script>
+    // Array of random quotes
+    const quotes = [
+        { text: "The only limit to our realization of tomorrow is our doubts of today.", author: "Franklin D. Roosevelt" },
+        { text: "In the end, we will remember not the words of our enemies, but the silence of our friends.", author: "Martin Luther King Jr." },
+        { text: "Life is what happens when you're busy making other plans.", author: "John Lennon" },
+        { text: "Get busy living or get busy dying.", author: "Stephen King" },
+        { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" }
+    ];
+
+    // Function to get a random quote
+    function getRandomQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        return quotes[randomIndex];
+    }
+
+    // Display the random quote
+    const quote = getRandomQuote();
+    document.getElementById("quote").textContent = `"${quote.text}"`;
+    document.getElementById("author").textContent = `- ${quote.author}`;
+</script>
+
+</body>
+</html>
