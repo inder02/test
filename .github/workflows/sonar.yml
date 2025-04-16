@@ -15,15 +15,14 @@ jobs:
         uses: actions/checkout@v2
 
       # Step 2: Set up JDK (SonarScanner requires Java)
-      - name: Set up JDK 11
+      - name: Set up JDK 11 (AdoptOpenJDK / Adoptium)
         uses: actions/setup-java@v2
         with:
-          java-version: '11'
-          distribution: 'openjdk'
-          
+          java-version: '11'  # Specify the JDK version you need
+          distribution: 'adoptopenjdk'  # Use Adoptium (AdoptOpenJDK) distribution
+
       # Step 3: Install SonarQube Scanner (run the Docker container)
       - name: Run SonarQube Scan
         run: |
           docker run --rm -e SONAR_LOGIN="${{ secrets.SONAR_TOKEN }}" --network="host" \
           -v $(pwd):/usr/src -v $(pwd)/scanner-cache:/usr/src/output sonarsource/sonar-scanner-cli
-          
