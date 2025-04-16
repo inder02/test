@@ -1,0 +1,42 @@
+name: "CodeQL Analysis"
+
+on:
+  push:
+    branches:
+      - main  # or any other branch like 'dev', 'feature-branch', etc.
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '28 1 * * 6'  # Optional: Run every Saturday at 1:28 AM UTC
+
+jobs:
+  analyze:
+    name: Analyze Code with CodeQL
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write  # Permission to report security issues
+      actions: read
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript', 'python', 'java', 'go' ]  # Add languages that your repo uses
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+
+    - name: Build the code
+      run: |
+        # Build your code if necessary. For example, for Java, you might run `mvn clean install`
+        echo "Running build step (if needed)"
+    
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
