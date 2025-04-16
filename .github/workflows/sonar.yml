@@ -19,6 +19,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'
+          distribution: 'adoptopenjdk'
           
       # Step 3: Install SonarQube Scanner (run the Docker container)
       - name: Run SonarQube Scan
